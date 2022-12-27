@@ -1,14 +1,26 @@
-const person: {
-    name: string;
-    age: number;
-    hobbies: string[];
-    role: [number, string];
-} = {
-// const person = {
-    name: 'Mateusz',
-    age: 30,
-    hobbies: ['sports', 'computer science'],
-    role: [2, 'author'],
-};
+const add = (n1: number, n2: number) => {
+    return n1 + n2;
+}
 
-console.log(person);
+const printResult = (num: number) => {
+    console.log('Result: ' + num);
+}
+
+const addAndHandle = (n1: number, n2: number, cb: (num: number) => void) => {
+    const result = n1 + n2;
+    cb(result);
+}
+
+printResult(add(5, 15));
+
+let combineValues: (a: number, b: number) => number;
+
+combineValues = add;
+// combineValues = printResult;
+// combineValues = 5;
+
+console.log(combineValues(8, 8));
+
+addAndHandle(10, 20, (result) => {
+    console.log(result);
+})
